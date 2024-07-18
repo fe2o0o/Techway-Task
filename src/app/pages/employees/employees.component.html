@@ -1,0 +1,65 @@
+<section>
+  <div class="container p-3">
+    <div class="">
+      <h1 class="fs-3 fw-bolder">All Employees</h1>
+    </div>
+    <div class="search">
+      <div class="row justify-content-between">
+        <div class="col-md-5">
+          <input (input)="applyFilter($event.target,'name')" placeholder="Filter By Name" type="search" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input (input)="applyFilter($event.target,'position')" placeholder="Filter By Position" type="search" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="employees py-5">
+      <div class="mat-elevation-z8">
+        <table  mat-table [dataSource]="dataSource">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Position </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef> Department </th>
+            <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="salary">
+            <th mat-header-cell *matHeaderCellDef> Salary </th>
+            <td mat-cell *matCellDef="let element"> {{element.salary|currency:'EGP '}} </td>
+          </ng-container>
+          <ng-container matColumnDef="controls">
+            <th mat-header-cell *matHeaderCellDef> controles </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="d-flex flex-wrap">
+                <button (click)="deleteEmployee(element._id)" class="btn  btn-danger  me-2"><mat-icon>delete</mat-icon></button>
+                <button (click)="updateEmployee(element)" class="btn  btn-warning me-2"><mat-icon>autorenew</mat-icon></button>
+                <button [routerLink]="['/employee' , element._id]"  class="btn  btn-success"><mat-icon>visibility</mat-icon></button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</section>

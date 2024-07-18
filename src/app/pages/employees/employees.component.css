@@ -1,0 +1,17 @@
+section {
+    width: 80% !important;
+    margin-left: 20% !important;
+}
+
+
+@media screen and (max-width:992px){
+  section{
+    width: calc(100% - 100px) !important;
+    margin-left: 100px !important;
+  }
+}
+
+table{
+  width: 100%;
+  table-layout: fixed;
+}

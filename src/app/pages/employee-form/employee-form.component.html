@@ -1,0 +1,64 @@
+<section class="vh-100">
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="form mx-auto shadow-lg p-4 rounded-3">
+      <form [formGroup]="employeeForm" (ngSubmit)="handleSubmit(employeeForm)" action="">
+        <h1 class="fs-3 fw-bolder text-center">{{mood() == 'add' ? 'Add Employee' : 'UpDate Employee'}}</h1>
+        <div class="form-group mb-4">
+          <label class="fw-medium mb-2" for="">Employee Name</label>
+          <input formControlName="name" type="text" class="form-control">
+          @if(employeeForm.get('name')?.errors && employeeForm.get('name')?.touched){
+            @if(employeeForm.get('name')?.getError('required')){
+            <strong class="text-danger">Name Is Required</strong>
+            }@else if (employeeForm.get('name')?.getError('minlength')) {
+            <strong class="text-danger">Minimun Length Is 4 Characters</strong>
+            }
+            @else if (employeeForm.get('name')?.getError('maxlength')) {
+            <strong class="text-danger">Maxmum Length Is 15 Characters</strong>
+            }
+          }
+        </div>
+        <div class="form-group mb-4">
+          <label class="fw-medium mb-2" for="">Employee Position</label>
+          <input formControlName="position" type="text" class="form-control">
+            @if(employeeForm.get('position')?.errors && employeeForm.get('position')?.touched){
+            @if(employeeForm.get('position')?.getError('required')){
+            <strong class="text-danger">position Is Required</strong>
+            }@else if (employeeForm.get('position')?.getError('minlength')) {
+            <strong class="text-danger">Minimun Length Is 4 Characters</strong>
+            }
+            @else if (employeeForm.get('position')?.getError('maxlength')) {
+            <strong class="text-danger">Maxmum Length Is 15 Characters</strong>
+            }
+            }
+        </div>
+        <div class="form-group mb-4">
+          <label class="fw-medium mb-2" for="">Employee Department</label>
+          <input formControlName="department" type="text" class="form-control">
+          @if(employeeForm.get('department')?.errors && employeeForm.get('department')?.touched){
+          @if(employeeForm.get('department')?.getError('required')){
+          <strong class="text-danger">department Is Required</strong>
+          }@else if (employeeForm.get('department')?.getError('minlength')) {
+          <strong class="text-danger">Minimun Length Is 4 Characters</strong>
+          }
+          @else if (employeeForm.get('department')?.getError('maxlength')) {
+          <strong class="text-danger">Maxmum Length Is 15 Characters</strong>
+          }
+          }
+
+        </div>
+        <div class="form-group mb-4">
+          <label class="fw-medium mb-2" for="">Employee Salray</label>
+          <input formControlName="salary"  type="number" class="form-control">
+            @if(employeeForm.get('salary')?.errors && employeeForm.get('salary')?.touched){
+              @if(employeeForm.get('salary')?.getError('required')){
+              <strong class="text-danger">Salary Is Required</strong>
+              }@else if (employeeForm.get('salary')?.getError('min')) {
+              <strong class="text-danger">Minimun Salary Is 100 EGP</strong>
+              }
+            }
+        </div>
+        <button [disabled]="employeeForm.invalid" class="btn btn-success w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

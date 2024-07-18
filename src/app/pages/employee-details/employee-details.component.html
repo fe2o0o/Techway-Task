@@ -1,0 +1,27 @@
+<section>
+  <div class="container py-5">
+    <div class="card w-75 mx-auto">
+      <div class="p-3 text-center">
+        <img width="100" height="100" class="rounded-circle" src="male-placeholder-image.jpeg" alt="">
+      </div>
+      <div class="content p-4">
+        <div class="d-flex justify-content-evenly">
+          <p>
+            Name : {{employeeData()?.name}}
+          </p>
+          <p>
+            Position : {{employeeData()?.position}}
+          </p>
+        </div>
+        <div class="d-flex justify-content-evenly">
+          <p>
+            Department : {{employeeData()?.department}}
+          </p>
+          <p>
+            Salary : {{employeeData()?.salary|currency:"EGP "}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

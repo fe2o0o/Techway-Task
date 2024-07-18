@@ -1,0 +1,18 @@
+aside{
+  width: 20% !important;
+}
+
+.active{
+  background-color: #FFF1DB;
+  color: black !important;
+}
+
+
+@media screen and (max-width:992px){
+  aside{
+    width: 100px !important;
+  }
+  .nav-text{
+    display: none;
+  }
+}
